@@ -1,0 +1,13 @@
+{
+  "intents" : [
+    {
+      "intent" : "GetLaunchInfo",
+      "slots" : [
+        {
+          "name" : "NextLast",
+          "type" : "NEXT_OR_LAST"
+        }
+      ]
+    }
+  ]
+}
