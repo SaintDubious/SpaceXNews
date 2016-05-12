@@ -1,1 +1,6 @@
-GetLaunchInfo the {NextLast} launch
+GetLaunchInfo {NextLast} launch
+GetLaunchInfo on the {NextLast} launch
+GetLaunchInfo about the {NextLast} launch
+GetLaunchInfo in regards to the {NextLast} launch
+GetLaunchInfo regarding the {NextLast} launch
+GetLaunchInfo pertinent to the {NextLast} launch

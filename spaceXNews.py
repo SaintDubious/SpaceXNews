@@ -65,47 +65,60 @@ def on_session_ended(session_ended_request, session):
 
 def get_welcome_response():
     session_attributes = {}
-    card_title = "Welcome"
-    reprompt_text = ""
-    should_end_session = True
     speech_output = "You can ask me about the previous or next SpaceX launch."
     return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
+        speech_output, speech_output))
 
 def get_launch_info(intent, session):
     card_title = intent['name']
     session_attributes = {}
-    should_end_session = True
-    reprompt_text = ""
 
     if 'NextLast' in intent['slots']:
-        next_last = intent['slots']['NextLast']['value']
+        next_last = intent['slots']['NextLast']['value'].lower()
     else:
         next_last = "last"
 
-    if next_last == "next":
+    if (next_last == "next" or next_last == "coming" or next_last == "upcoming" or
+        next_last == "imminent" or next_last == "ensuing" or next_last == "following" or
+        next_last == "subsequent" or next_last == "future" or next_last == "impending" or
+        next_last == "later"):
         speech_output = speech_for_next_launch()
-    else:
+        card_text = card_text_for_next_launch()
+    elif (next_last == "last" or next_last == "previous" or next_last == "past" or
+          next_last == "preceding" or next_last == "earlier" or next_last == "prior"):
         speech_output = speech_for_last_launch()
+        card_text = card_text_for_last_launch()
+    else:
+        raise ValueError("Invalid next or last modifier: " + next_last)
 
     return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
+        speech_output, card_text))
 
 def speech_for_next_launch():
     return speech_for_unknown_next_launch()
+
+def card_text_for_next_launch():
+    return card_text_for_unknown_next_launch()
 
 def speech_for_last_launch():
     return "At 1:21 a.m. Eastern Time on May 6, SpaceX successfully launched a Falcon Nine rocket. " \
            "The first stage landing attempt on the autonomous spaceport drone ship, \"Of Course I Still Love You\", " \
            "was also successful."
 
+def card_text_for_last_launch():
+    return speech_for_last_launch()
+
 def speech_for_unknown_next_launch():
     return "I don't know when the next launch is. If you have some information, please send it to me at " \
            "spacex news at dubious soft dot com"
 
+def card_text_for_unknown_next_launch():
+    return "I don't know when the next launch is. If you have some information, please send it to me at " \
+           "spacexnews@dubioussoft.com"
+
 # --------------- Helpers that build all of the responses ----------------------
 
-def build_speechlet_response(title, output, reprompt_text, should_end_session):
+def build_speechlet_response(output, card_text):
     return {
         'outputSpeech': {
             'type': 'PlainText',
@@ -113,16 +126,10 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         },
         'card': {
             'type': 'Simple',
-            'title': 'SessionSpeechlet - ' + title,
-            'content': 'SessionSpeechlet - ' + output
+            'title': 'SpaceX News',
+            'content': card_text
         },
-        'reprompt': {
-            'outputSpeech': {
-                'type': 'PlainText',
-                'text': reprompt_text
-            }
-        },
-        'shouldEndSession': should_end_session
+        'shouldEndSession': True
     }
 
 def build_response(session_attributes, speechlet_response):

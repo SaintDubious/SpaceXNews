@@ -8,6 +8,9 @@
           "type" : "NEXT_OR_LAST"
         }
       ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
     }
   ]
 }
