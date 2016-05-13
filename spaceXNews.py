@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-def lambda_handler(event, context):
+def main(event, context):
     """ Route the incoming request based on type (LaunchRequest, IntentRequest,
     etc.) The JSON body of the request is provided in the event parameter.
     """
@@ -114,7 +114,7 @@ def speech_for_unknown_next_launch():
 
 def card_text_for_unknown_next_launch():
     return "I don't know when the next launch is. If you have some information, please send it to me at " \
-           "spacexnews@dubioussoft.com"
+           "spacexnews@dubiousoft.com"
 
 # --------------- Helpers that build all of the responses ----------------------
 

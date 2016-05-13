@@ -1,6 +1,42 @@
 GetLaunchInfo {NextLast} launch
-GetLaunchInfo on the {NextLast} launch
-GetLaunchInfo about the {NextLast} launch
-GetLaunchInfo in regards to the {NextLast} launch
-GetLaunchInfo regarding the {NextLast} launch
-GetLaunchInfo pertinent to the {NextLast} launch
+GetLaunchInfo tell me about the {NextLast} launch
+GetLaunchInfo tell me something about the {NextLast} launch
+GetLaunchInfo tell me news about the {NextLast} launch
+GetLaunchInfo tell me news regarding the {NextLast} launch
+GetLaunchInfo tell me info about the {NextLast} launch
+GetLaunchInfo tell me info regarding the {NextLast} launch
+GetLaunchInfo tell me information about the {NextLast} launch
+GetLaunchInfo tell me information regarding the {NextLast} launch
+GetLaunchInfo get me info about the {NextLast} launch
+GetLaunchInfo get me info on the {NextLast} launch
+GetLaunchInfo get me info in regards to the {NextLast} launch
+GetLaunchInfo get me info regarding the {NextLast} launch
+GetLaunchInfo get me information about the {NextLast} launch
+GetLaunchInfo get me information on the {NextLast} launch
+GetLaunchInfo get me information in regards to the {NextLast} launch
+GetLaunchInfo get me information regarding the {NextLast} launch
+GetLaunchInfo get me the lowdown on the {NextLast} launch
+GetLaunchInfo get me the skinny on the {NextLast} launch
+GetLaunchInfo info on the {NextLast} launch
+GetLaunchInfo info regarding the {NextLast} launch
+GetLaunchInfo info in regards to the {NextLast} launch
+GetLaunchInfo information on the {NextLast} launch
+GetLaunchInfo information regarding the {NextLast} launch
+GetLaunchInfo information in regards to the {NextLast} launch
+GetLaunchInfo news on the {NextLast} launch
+GetLaunchInfo news regarding the {NextLast} launch
+GetLaunchInfo news in regards to the {NextLast} launch
+GetLaunchInfo the lowdown on the {NextLast} launch
+GetLaunchInfo the skinny on the {NextLast} launch
+GetLaunchInfo there is any news about the {NextLast} launch
+GetLaunchInfo there is any news regarding the {NextLast} launch
+GetLaunchInfo there is any news in regards to the {NextLast} launch
+GetLaunchInfo there is any info about the {NextLast} launch
+GetLaunchInfo there is any info regarding the {NextLast} launch
+GetLaunchInfo there is any info in regards to the {NextLast} launch
+GetLaunchInfo there is any information about the {NextLast} launch
+GetLaunchInfo there is any information regarding the {NextLast} launch
+GetLaunchInfo there is any information in regards to the {NextLast} launch
+GetLaunchInfo when is the {NextLast} launch
+GetLaunchInfo when was the {NextLast} launch
+GetLaunchInfo how did the {NextLast} launch go
