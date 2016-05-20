@@ -1,4 +1,5 @@
 GetLaunchInfo {NextLast} launch
+GetLaunchInfo the {NextLast} launch
 GetLaunchInfo tell me about the {NextLast} launch
 GetLaunchInfo tell me something about the {NextLast} launch
 GetLaunchInfo tell me news about the {NextLast} launch

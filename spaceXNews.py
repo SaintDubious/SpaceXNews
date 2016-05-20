@@ -51,6 +51,8 @@ def on_intent(intent_request, session):
         return get_launch_info(intent,session)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
+    elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
+        return handle_session_end_request()
     else:
         raise ValueError("Invalid intent")
 
@@ -65,9 +67,16 @@ def on_session_ended(session_ended_request, session):
 
 def get_welcome_response():
     session_attributes = {}
-    speech_output = "You can ask me about the previous or next SpaceX launch."
+    speech_output = "I know a little bit about the SpaceX launch schedule. " \
+    "Are you interested in the next launch, or the last one?"
     return build_response(session_attributes, build_speechlet_response(
-        speech_output, speech_output))
+        False, speech_output, speech_output))
+
+def handle_session_end_request():
+    session_attributes = {}
+    speech_output = "Good Bye."
+    return build_response(session_attributes, build_speechlet_response(
+        True, speech_output, speech_output))
 
 def get_launch_info(intent, session):
     card_title = intent['name']
@@ -92,7 +101,7 @@ def get_launch_info(intent, session):
         raise ValueError("Invalid next or last modifier: " + next_last)
 
     return build_response(session_attributes, build_speechlet_response(
-        speech_output, card_text))
+        True, speech_output, card_text))
 
 def speech_for_next_launch():
     return speech_for_unknown_next_launch()
@@ -102,7 +111,7 @@ def card_text_for_next_launch():
 
 def speech_for_last_launch():
     return "At 1:21 a.m. Eastern Time on May 6, SpaceX successfully launched a Falcon Nine rocket. " \
-           "The first stage landing attempt on the autonomous spaceport drone ship, \"Of Course I Still Love You\", " \
+           "The first stage landing attempt on the autonomous spaceport drone ship, the \"Of Course I Still Love You\", " \
            "was also successful."
 
 def card_text_for_last_launch():
@@ -110,15 +119,15 @@ def card_text_for_last_launch():
 
 def speech_for_unknown_next_launch():
     return "I don't know when the next launch is. If you have some information, please send it to me at " \
-           "spacex news at dubious soft dot com"
+           "spacex info at dubious soft dot com"
 
 def card_text_for_unknown_next_launch():
     return "I don't know when the next launch is. If you have some information, please send it to me at " \
-           "spacexnews@dubiousoft.com"
+           "spacexinfo@dubiousoft.com"
 
 # --------------- Helpers that build all of the responses ----------------------
 
-def build_speechlet_response(output, card_text):
+def build_speechlet_response(shouldEnd, output, card_text):
     return {
         'outputSpeech': {
             'type': 'PlainText',
@@ -126,10 +135,10 @@ def build_speechlet_response(output, card_text):
         },
         'card': {
             'type': 'Simple',
-            'title': 'SpaceX News',
+            'title': 'SpaceX Info',
             'content': card_text
         },
-        'shouldEndSession': True
+        'shouldEndSession': shouldEnd
     }
 
 def build_response(session_attributes, speechlet_response):
@@ -138,3 +147,4 @@ def build_response(session_attributes, speechlet_response):
         'sessionAttributes': session_attributes,
         'response': speechlet_response
     }
+    
